@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li {
+            margin-bottom: 8px;
+        }
+    </style>
+
+    <script>
+        function adicionartarefa() {
+            const tarefa = document.getElementById("novatarefa").value;
+            const ulcontent = document.getElementById("listatarefas")
+
+            //variaveis que criam o botão e a LI
+            const licontent = document.createElement("li")
+            const buttoncontent = document.createElement("button")
+
+            //LI recebe o conteúdo digitado
+            licontent.textContent = tarefa
+            
+            //função anonima do botão remover
+            buttoncontent.textContent= "remover";
+            buttoncontent.onclick = function () {
+                ulcontent.removeChild(licontent)
+            }
+            
+            //estilo do botão
+            buttoncontent.style.backgroundColor="red";
+            buttoncontent.style.marginLeft = "10px";
+            
+            //adiciona a LI e o botão
+            ulcontent.appendChild(licontent)
+            licontent.appendChild(buttoncontent)
+            
+            novatarefa.value = "";
+        }
+    </script>
+</head>
+<body>
+    <input type="text" id="novatarefa" placeholder="digite uma nova tarefa">
+    <button onclick="adicionartarefa()" style="background-color: rgb(6, 206, 6);">adicionar tarefa</button>
+    <ul id="listatarefas">
+
+    </ul>
+</body>
+</html>

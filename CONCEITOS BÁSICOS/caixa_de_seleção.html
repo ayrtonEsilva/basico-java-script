@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        function mostrarmensagem(){
+            const opcaoselecionada = document.getElementById("opcoes").value;
+            let = mensagem = "";
+
+            switch (opcaoselecionada) {
+                case "opcao1": 
+                mensagem = "Você selecionou a opção 1.";
+                break;
+
+                case "opcao2": 
+                mensagem = " Você selecionou a opçaõ 2.";
+                break;
+
+                case "opcao3": 
+                mensagem = "Você seçecionou a opção 3.";
+                break;
+
+                default:
+                mensagem = "";
+
+            }
+            document.getElementById("mensagemopcao").textContent = mensagem;
+        }
+    </script>
+</head>
+<body>
+    <label for="escolha">escolha uma das opções</label>
+
+    <select name="" id="opcoes" onclick="mostrarmensagem()">
+        <option value="">escolha uma opcao</option>
+        <option value="opcao1">opçaõ 1</option>
+        <option value="opcao2">opção 2</option>
+        <option value="opcao3">opção 3</option>
+
+        
+    </select>
+    <p id="mensagemopcao"></p>
+
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function validarformulario(){
+            const nome = document.getElementById ("nome").value;
+            const email = document.getElementById("email").value;
+            const senha = document.getElementById("senha").value;
+            const mensagemerro = document.getElementById("mensagemerro")
+            const mensagemsucesso = document.getElementById("mensagemsucesso")
+
+            // verifica se todos os campos foram preenchidos
+            if ( !nome & !email & !senha) {
+                mensagemerro.textContent = "todos os campos são obrigatórios.";
+                mensagemsucesso.textContent = "";
+                return false;
+            }
+
+            //verifica se o e-mail é válido
+            if ( !isvalidemail(email)) {
+                mensagemerro.textContent = "Digite um email válido";
+                mensagemsucesso.textContent = "";
+                return false;
+            }
+
+            //verifica se a senha possuipelo menos 6 caracteres
+            if (senha.length < 6) {
+            mensagemerro.textContent = "a senha deve ter pelo menos 6 caracteres"
+            mensagemsucesso.textContent = ""
+            return false;
+            }
+
+            //todas as valodações passaram, exibe uma mensagem de sucesso
+            alert("O formulário foi enviado com sucesso ")
+            return true;
+        }
+
+
+
+            //função para verificar se um e-mail é valido
+            function isvalidemail(email) {
+                const emailpattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                //codigo regex
+                return emailpattern.test(email);
+            }
+
+
+    </script>
+</head>
+<body>
+
+    <form >
+        <label for="nome">nome:</label>
+        <input type="text" id="nome" required>
+        <br><br>
+        <label for="email">E-mail:</label>
+        <input type="text"  id="email" required>
+        <br><br>
+        <label for="password">Senha:</label>
+        <input type="password"  id="senha" required>
+        <br><br>
+        <button type="button" onclick=" validarformulario()">enviar!</button>
+    </form>
+
+    <p id="mensagemerro" style="color: red;"></p>
+    <p id="mensagemsucesso" style="color: rgb(0, 213, 0);"></p>
+    
+</body>
+</html>
