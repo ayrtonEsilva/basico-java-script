@@ -7,6 +7,32 @@
     <title>previsão do tempo
 
     </title>
+
+    <script>
+
+        const APIkey = '7e07e4fb4f45cbb5b31b12e44d5d76d4'
+        async function getWeather() {
+            const CityInput = document.getElementById("city");
+            const city = CityInput.value;
+
+            //Chamada da API
+            const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city},{state code},{country code}&limit={limit}&appid=${APIkey}`)
+
+            //RESPOSTA DA API E TRANSFORMANDO EM JSON
+            const data = await response.json();
+
+
+            if (data.cod === 200) {// 200 INDICA UMA RESPOSTA BEM SUCEDIDA
+            const WeatherInfoDiv = document.getElementById("weatherInfo");
+            const weatherDescription = data.weather[0].description;
+            const temperature = (data.main.temp - 273.15).toFixed(1);
+            
+            WeatherInfoDiv.innerHTML= `
+            <h2> =Previsão do tempo <h2>
+                <p>Descrição do tempo: ${weatherDescription}<p>`}
+
+        }
+    </script>
 </head>
 <body>
     <h1>Previsão do tempo</h1>
