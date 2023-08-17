@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>previsão do tempo</title>
+    <title>Document</title>
 
     <script>
 
         const APIkey = '7e07e4fb4f45cbb5b31b12e44d5d76d4';
 
         async function getWeather(){
+            
             const CityInput = document.getElementById('city');
             const city = CityInput.value;
 
@@ -22,14 +23,14 @@
 
 
             if (data.cod === 200) {      // 200 INDICA UMA RESPOSTA BEM SUCEDIDA
-            const WeatherInfoDiv = document.getElementById('WeatherInfo');
+            const Div = document.getElementById('WeatherInfo');
             const weatherDescription = data.weather[0].description;
             const temperature = (data.main.temp - 273.15).toFixed(1)
             
-            WeatherInfoDiv.innerHTML = `
-            <h2>Previsão do tempo <h2>
-            <p>Descrição do tempo: ${weatherDescription}<p>
-            <p>temperatura: ${temperature}<p>
+            Div.innerHTML = `
+            <h2>Previsão do tempo</h2>
+            <p>Descrição do tempo: ${weatherDescription}</p>
+            <p>temperatura: ${temperature}</p>
             `;  
             }else {
                 alert("Nome da cidade não encontrado, verifique o nome digitado.");
@@ -38,17 +39,14 @@
         }
     </script>
 
-    
 </head>
 <body>
-    <h1>Previsão do tempo</h1>
 
+    <h1>Previsão do tempo</h1>
     <label for="city">Digite o nome da cidade:</label>
-    <input type="text" name="cidade" id="CityInput">
+    <input type="text" name="cidade" id='city'>
     <button onclick="getWeather()"> obter previsão</button>
     <div id="WeatherInfo"></div>
-
-
     
 </body>
 </html>
